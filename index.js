@@ -425,7 +425,7 @@ app.post("/pay" , async (req,res) => {
             } else {
               console.log(patient);
               var mailOptions = {
-                from: 'siddharthsshah1207@gmail.com',
+                from: '',
                 to: patient.email,
                 subject: 'Email for confirmation of Payment',
                 text: `Your Payment is Successfull! You have paid ${orderAmount/100} to Dr.${doctor.username}.`
@@ -551,7 +551,7 @@ app.post('/bookdoctor/:id/updation',function(req,res){
     patient.vc_rooms.push(room_code);
     patient.save();
     let mailOptions = {
-      from: "siddharth1207@gmail.com",
+      from: "",
       to: patient.email,
       subject: 'Appointment Confirmation',
       text:'Thankyou for booking with DoctAid',
@@ -587,7 +587,7 @@ app.get('/tpz',(req,res)=>{
   var degree;
   var date;
   let mailOptions = {
-    from: "siddharth1207@gmail.com",
+    from: "",
     to: req.user.email,
     subject: 'Prescription',
     html:`<h3>Greetings!</h3><h3>Here is your Prescription from the last appointment!</h3><h4 class="text-center">
@@ -608,8 +608,6 @@ app.get('/tpz',(req,res)=>{
       doctName=req.user.consultation[i];
       date=req.user.appointment_dates[i];
       User.findById(req.user.patientArray[i]).populate('patientArray[i]').exec(function(err,data){
-        console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-
        contact=data.phNumber;
 console.log(contact);
        clinic=data.address;
