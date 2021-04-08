@@ -1,0 +1,120 @@
+                      <!-- PRESCRIPTION PDF -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+    <style>
+        table, th, td,tr {
+  border: 1px solid black;
+        }
+       
+  </style>
+  </head>
+  <body>
+    
+    <div class="container p-2 " style="border: 2px solid grey;border-radius:10px;">
+      <h1 class="display-3 text-center">
+        Doct<span style="color: green">Aid</span>
+      </h1>
+      <div class="container">
+        <div class="row">
+          <div class="d-flex">
+            <div class="d-flex flex-column py-4 px-3">
+              <h5><b>Date: <%=date%></b></h5>
+              <h5> <b>Doctor: <%=doctName%></b></h5>
+            </div>
+          </div>
+          <div style="width: 400px;"></div>
+          <div class="d-flex">
+            <div class="d-flex flex-column py-4 px-3">
+              <h5><b>Contact:<%=contact%></b></h5>
+              <h5> <b>Clinic Address: <%=clinic%></b></h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="d-flex justify-content-between px-3">
+            <div class="d-flex flex-column">
+              <h5 style="background-color: rgb(250, 250, 135);"> <b>Patient:<%=patient.username%></b></h5>
+            </div>
+            <div class="d-flex flex-column">
+              <p><b>Gender: <%=patient.Gender%>  </b></p>
+            </div>
+            <div class="d-flex flex-column">
+              <p> <b>Age: <%=patient.Age%></b></p>
+            </div>
+          </div>
+         
+        </div>
+        <div class="container px-3">
+         
+        <table class="table table-bordered">
+          <thead>
+            <tr style="background-color: rgb(224, 224, 224);">
+              <th scope="col">Medicines & Dosage</th>
+              <th scope="col">Reports Suggested</th>
+              <th scope="col">General Instructions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><%for(var i=0;i<patient.medicines.length;i++){
+                %> <div><%=patient.medicines[i]%></div> <%
+              }%></th>
+              <td><%for(var i=0;i<patient.reports.length;i++){
+                %> <div><%=patient.reports[i]%></div> <%
+              }%></td>
+              <td><%for(var i=0;i<patient.instructions.length;i++){
+                %> <div><%=patient.instructions[i]%></div> <%
+              }%></td>
+             
+            </tr>
+          
+            
+         
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between mx-2">
+        <div class="d-flex flex-column text-muted" style="font-size: small;">
+          <p>
+            Note : <br />
+            (a) It is the duty of the patient to save or take a print of the prescription for future references <br />
+            (b) It is advised to consume only those drugs as prescribed by the doctor <br> (c) No alterations will be allowed once the prescription is generated  <br />
+            (d) DoctAid will not be responsible for any kind of tampering with the official prescriptions
+          </p>
+        </div>
+        <h6 class="py-4">Sign of Medical Practioner</h6>
+      </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center p-1  ">
+ 
+      </div>
+      </div>
+  
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  </body>
+</html>

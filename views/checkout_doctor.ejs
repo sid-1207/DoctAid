@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+   body{
+       padding: 50px;
+   }
+</style>
+<body>
+    <div class="bg-light" style="border-radius: 10px;">
+        <h4 class="text-center">
+            Doct<span style="color: green">Aid</span>
+          </h4>
+         
+          <div class="row">
+            <div class="col">
+                <div class="px-2"><h5>Date: <%=date%></h5></div>
+               <div class="px-2" ><h5>Doctor: <%=currentUser.username%></h5> </div>
+            </div>
+            <h3 style="padding-right: 35%;"> Pre<span style="color: green">scription</span> for <%=patient%></h3>
+             
+          </div>  
+    <hr> 
+    <form action="/checkoutdoctor" method="POST">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="container"style="max-width: 400px;">
+              <div><b>Prescribe Medicines</b> </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="medications">
+                                    <div class="input-group mb-1">
+                                        <input type="text" name="medications" class="form-control m-input" placeholder="Crocine 1-0-1" autocomplete="off">
+                                        <div class="input-group-append">                
+                                            <button id="removeMeds" type="button" class="btn btn-danger">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div id="newMed"></div>
+                                <button id="addMeds" type="button" class="btn btn-info">+</button>
+                            </div>
+                        </div>  
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="container"style="max-width: 400px;">
+                    <div><b>Suggest Reports</b> </div>
+                 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="reports">
+                                    <div class="input-group mb-1">
+                                        <input type="text" name="reports" class="form-control m-input" placeholder="Lipid Profile" autocomplete="off">
+                                        <div class="input-group-append">                
+                                            <button id="removeReports" type="button" class="btn btn-danger">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div id="newReports"></div>
+                                <button id="addReports" type="button" class="btn btn-info">+</button>
+                            </div>
+                        </div>  
+                
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="container"style="max-width: 400px;">
+                    <div><b>Instructions to be followed</b> </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="instructions">
+                                    <div class="input-group mb-1">
+                                        <input type="text" name="instructions" class="form-control m-input" placeholder="Avoid Sugar" autocomplete="off">
+                                        <div class="input-group-append">                
+                                            <button id="removeInstructions" type="button" class="btn btn-danger">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div id="newInstructions"></div>
+                                <button id="addInstructions" type="button" class="btn btn-info">+</button>
+                            </div>
+                        </div>  
+                
+                </div>
+            </div>
+           
+            
+        </div>
+        <div class="text-center">
+            <button id="" type="submit" class="btn btn-success">Prescribe</button>
+        </div>
+    </form>
+  
+   
+    </div>
+    <div class="alert alert-dark text-center" role="alert" style="position: absolute;bottom: 0; width: 1200px;">
+        ⓘ I hereby take complete responsibility of the drugs I prescribe<br>
+      </div>
+    <script type="text/javascript">
+        // +
+        $("#addMeds").click(function () {
+            var html = '';
+            html += '<div id="medications">';
+            html += '<div class="input-group mb-1">';
+            html += '<input type="text" name="medications" class="form-control m-input" placeholder="Crocine 1-0-1" autocomplete="off">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeMeds" type="button" class="btn btn-danger">-</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#newMed').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeMeds', function () {
+            $(this).closest('#medications').remove();
+        });
+
+        $("#addReports").click(function () {
+            var html = '';
+            html += '<div id="reports">';
+            html += '<div class="input-group mb-1">';
+            html += '<input type="text" name="reports" class="form-control m-input" placeholder="Lipid Profile" autocomplete="off">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeReports" type="button" class="btn btn-danger">-</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#newReports').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeReports', function () {
+            $(this).closest('#reports').remove();
+        });
+
+        $("#addInstructions").click(function () {
+            var html = '';
+            html += '<div id="instructions">';
+            html += '<div class="input-group mb-1">';
+            html += '<input type="text" name="instructions" class="form-control m-input" placeholder="Avoid Sugar" autocomplete="off">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeInstructions" type="button" class="btn btn-danger">-</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#newInstructions').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeInstructions', function () {
+            $(this).closest('#instructions').remove();
+        });
+        
+    </script>
+</body>
+</html>

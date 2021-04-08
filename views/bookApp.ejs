@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+    <title>Book Appointment</title>
+  </head>
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: stretch;
+    }
+    .sidebar p {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.1em;
+      font-weight: 300;
+      line-height: 1.7em;
+      color: white;
+    }
+    #sidebar {
+      min-width: 250px;
+      max-width: 250px;
+      min-height: 100vh;
+    }
+
+    #sidebar.active {
+      margin-left: -250px;
+    }
+
+    a,
+    a:hover,
+    a:focus {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    #sidebar {
+      /* don't forget to add all the previously mentioned styles here too */
+     
+      color: black;
+      transition: all 0.3s;
+    }
+
+    #sidebar .sidebar-header {
+     
+      text-align: start;
+    }
+    #sidebar ul li a {
+      padding: 10px;
+      font-size: 1.1em;
+      display: block;
+    }
+    #sidebar ul li a:hover {
+      background: rgb(29, 151, 29);
+      color: #fff;
+    }
+
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+      color: #fff;
+      background: green;
+    }
+    #consult {
+      height: 400px;
+      width: 700px;
+    }
+    .card{
+        width:200px;
+        height: 140px;
+    }
+    .card-img-top {
+    width: 100%;
+    height: 8vw;
+    object-fit: cover;
+}
+  </style>
+  <body>
+    <div class="row">
+      <div class="wrapper px-2">
+        <!-- Sidebar -->
+        <nav id="sidebar"class="bg-light">
+          <div class="sidebar-header text-center">
+            <h6 class="display-4">
+              <b
+                ><span style="color: black">Doct</span
+                ><span style="color: rgb(19, 99, 19)">Aid</span></b
+              >
+            </h6>
+          </div>
+
+          <br />
+          <ul class="list-unstyled components">
+            <li class="">
+              <a href="/home" aria-expanded="false">Home</a>
+            </li>
+            <%if(currentUser.type=="patient"){
+              %>
+              <li class="active">
+              <a href="/bookappointment">Book An Appointment</a>
+            </li>
+              <%
+            }%>
+            <li>
+              <a href="#">Book Lab tests</a>
+            </li>
+            <li>
+              <a href="/medicalstores" aria-expanded="false">Buy Medicines</a>
+            </li>
+            <%if(currentUser.type=="patient"){
+              %>
+              <li>
+              <a href="/tpz">My Prescriptions</a>
+            </li>
+              <%
+            }%>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li class="" id="logout">
+              <a href="/logout">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    //SIDEBAR CODE ENDS
+      
+      <div class="col-lg-9 px-4">
+        <div class="row ">
+          <h4 style="color: rgb(21, 21, 148);"><lord-icon
+            src="https://cdn.lordicon.com/uukerzzv.json"
+            trigger="loop"
+            colors="primary:#000000,secondary:#1b1091"
+            style="width:128px;height:128px">
+        </lord-icon>Select Specialization</h4>
+      
+      </div>
+        <div class="container text-center">
+          <div class="row">
+
+            <div class="card mr-3">
+                    <img  class="card-img-top" src="/images/Consultant_Physician_v2.jpg"   alt="" />
+                <div class="">
+                  <form action="/bookappointment" method="POST">
+                    <button style="width:200px;" id="btn" type="submit" class="btn btn-success" name="specialization" value="Consultant Physician">
+                      Consultant Physician
+                    </button>
+                
+                  </form>
+                </div>
+            </div>
+             
+            <div class="card mr-3">
+                <img  class="card-img-top" src="/images/Gynecology_v2.jpg"   alt="" />
+                <form action="/bookappointment" method="POST">
+                  <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Gynecology">
+                    Gynecology
+                  </button>
+              
+                </form>
+            </div>
+
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Pediatrician_v2.jpg"   alt="" />
+                <form action="/bookappointment" method="POST">
+                  <button style="width:200px;" id="btn" type="submit" class="btn btn-success" name="specialization" value="Pediatrics">Pediatrics</button>
+                </form>
+              
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Dermatology_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Dermatology">
+                  Dermatology
+                </button>
+            
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Mental_Wellness_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Mental Wellness ">
+                  Mental Wellness
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/ent_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="ENT">
+                  ENT
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Orthopedic.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Orthopedics">
+                  Orthopedic
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Consultant_Physician_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Cardiology">
+                  Cardiology
+                </button>
+            
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Nutrition_Counselling_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Nutrition Counselling">
+                  Nutrition Counselling
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/diabetology.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Diabetology">
+                  Diabetology
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Genaral_Physician_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="Gastroenterology">
+                  Gastroenterology
+                </button>
+            
+              </form>
+            </div>
+            <div class="card mr-3">
+              <img  class="card-img-top" src="/images/Genaral_Physician_v2.jpg"   alt="" />
+              <form action="/bookappointment" method="POST">
+                <button style="width:200px;"id="btn" type="submit" class="btn btn-success" name="specialization" value="General Medicine">
+                  General Medicine
+                </button>
+            
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <img id="consult" src="images/consult.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
